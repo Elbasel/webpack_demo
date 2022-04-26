@@ -1,9 +1,9 @@
 import getTime from './get_time.js';
-import timeNow from './get_time.js';
 import ('./style.css')
 import img from './rocket.png';
 import Data from './data.xml';
 import Notes from './data.csv';
+import printMe from './print.js';
 
 function component() {
   const element = document.createElement('div');
@@ -15,61 +15,30 @@ rocketImage.src = img;
 const timePara = document.createElement('p')
 timePara.classList.add('time')
 
-timePara.textContent = timeNow()
+timePara.textContent = getTime()
 
 element.appendChild(rocketImage);
 element.appendChild(timePara)
  
   return element;
 }
-// element.textContent = timeNow();
 
 
 function clockButton() {
   const element = document.createElement('button');
   element.classList.add('clock-button');
   element.textContent = '⌛';
-  const watch = stopWatch()
-  element.addEventListener('click', (e) => watch.start(e, watch))
-
+  element.onclick = printMe
 
   return element
 
 }
 
 
-function stopWatch() {
-
-
-  let timer;
-
-
-
-  function updateTime() {
-    let button = document.querySelector('button')
-    const seconds = new Date().getSeconds()
-    button.textContent = seconds
-
-  }
-
-
-  function start(e, watch) {
-    e.target.removeEventListener('click', this)
-    e.target.addEventListener('click', watch.stop(e))
-    this.timer = setInterval(() => updateTime(), 1000)
-
-  }
-
-  function stop(e) {
-    clearInterval(this.timer)
-  }
-
-  return {timer, start, stop}
-}
 
 function updateTime() {
   const p = document.querySelector('p');
-  const timeString = timeNow();
+  const timeString = getTime();
   p.textContent = timeString;
 }
 
