@@ -2,6 +2,8 @@ import getTime from './get_time.js';
 import timeNow from './get_time.js';
 import ('./style.css')
 import img from './rocket.png';
+import Data from './data.xml';
+import Notes from './data.csv';
 
 function component() {
   const element = document.createElement('div');
@@ -76,6 +78,9 @@ document.body.appendChild(component());
 document.body.appendChild(clockButton())
 
 setInterval(() => updateTime(), 1000)
+
+console.log(Data);
+console.log(Notes);
 
 
 
